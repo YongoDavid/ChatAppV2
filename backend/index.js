@@ -20,14 +20,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "chat-app-v2-nine.vercel.app",
+    origin: "https://chatappv2-3ex0.onrender.com/",
     credentials: true,
   })
 );
 
 // app.use(
 //   cors({
-//     origin: "https://chat-app-v2-nine.vercel.app",
+//     origin: "http://localhost:5173",
 //     credentials: true,
 //   })
 // );
