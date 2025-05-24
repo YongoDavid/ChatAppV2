@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chatappv2-3ex0.onrender.com/",
+    origin: "https://chatappv2-3ex0.onrender.com",
     credentials: true,
   })
 );
