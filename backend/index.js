@@ -19,19 +19,19 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 
-// app.use(
-//   cors({
-//     origin: "https://chatappv2-3ex0.onrender.com",
-//     credentials: true,
-//   })
-// );
-
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://chatappv2-1-dzy1.onrender.com",
     credentials: true,
   })
 );
+
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
