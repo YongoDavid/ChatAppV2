@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.MODE === "development" ? "https://chatappv2-erkt.onrender.com" : "http://localhost:5001/api",
+  baseURL: import.meta.env.MODE === "development" ? "https://chatappv2-erkt.onrender.com" : "https://chatappv2-erkt.onrender.com",
   withCredentials: true,
 });
 // export const axiosInstance = axios.creates({
