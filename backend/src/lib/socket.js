@@ -1,9 +1,15 @@
 import { Server } from "socket.io";
 import http from "http";
+import cors from "cors";
 import express from "express";
 
 const app = express();
 const server = http.createServer(app);
+
+app.use(cors({
+  origin: ["http://localhost:5173", "https://chatappv2-1-dzy1.onrender.com"],
+  credentials: true,
+}));
 
 const io = new Server(server, {
   cors: {
