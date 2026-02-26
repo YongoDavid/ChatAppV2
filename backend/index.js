@@ -11,27 +11,33 @@ import authRoutes from "./src/routes/auth.route.js";
 import messageRoutes from "./src/routes/message.route.js";
 import { app, server } from "./src/lib/socket.js";
 
+// Load `.env` intelligently:
+// 1) Try loading from the current working directory (this handles `node index.js` run from repo root)
+// 2) If important keys are missing (e.g. when running from `backend` folder), fall back to parent `.env`
 dotenv.config();
+if (!process.env.MONGODB_URI || !process.env.PORT) {
+  dotenv.config({ path: path.resolve(process.cwd(), "../.env") });
+}
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173","https://chatappv2-1-dzy1.onrender.com"],
-    credentials: true,
-  })
-);
-
 // app.use(
 //   cors({
-//     origin: "http://localhost:5173",
+//     origin: ["http://localhost:5173","https://chatappv2-1-dzy1.onrender.com"],
 //     credentials: true,
 //   })
 // );
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
