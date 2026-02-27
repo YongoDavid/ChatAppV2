@@ -32,9 +32,10 @@ app.use(cookieParser());
 //   })
 // );
 
+// Allow frontend origins (no trailing slashes) and enable credentials for cookies
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://chatappv2-1-dzy1.onrender.com"],
     credentials: true,
   })
 );
