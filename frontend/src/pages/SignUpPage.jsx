@@ -145,8 +145,8 @@ const SignUpPage = () => {
       {/* right side */}
 
       <AuthImagePattern
-        title="Join our community"
-        subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
+        title="Join to Vibe"
+        subtitle="Step into a new era of connection. Spark conversations, share your story, and build relationships."
       />
     </div>
   );
