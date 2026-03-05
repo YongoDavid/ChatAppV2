@@ -110,4 +110,24 @@ export const useAuthStore = create((set, get) => ({
   disconnectSocket: () => {
     if (get().socket?.connected) get().socket.disconnect();
   },
+
+  // Demo helpers: create a temporary demo session without real socket connection
+  startDemoSession: (overrides = {}) => {
+    const demoUser = {
+      _id: overrides._id || "demo-user",
+      name: overrides.name || "Demo User",
+      email: overrides.email || "demo@chatapp.local",
+      avatar: overrides.avatar || null,
+      isDemo: true,
+    };
+
+    set({ authUser: demoUser });
+    // don't connect sockets for demo; mark as demo session
+    set({ isDemoSession: true });
+  },
+
+  endDemoSession: () => {
+    set({ authUser: null, isDemoSession: false });
+    get().disconnectSocket();
+  },
 }));
